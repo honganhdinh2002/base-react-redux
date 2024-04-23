@@ -1,4 +1,5 @@
 import React from "react";
+import './DisplayInfo.scss'
 
 
 class DisplayInfo extends React.Component {
@@ -30,9 +31,9 @@ class DisplayInfo extends React.Component {
                                 {this.state.isShowListUser &&
                                     <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
                                         <div>
-                                        <b>Họ và tên: </b>{user.name}</div>
-                                        <div><b>Tuổi: </b> {user.age}</div>
-                                        <div><b>Địa chỉ: </b> {user.address}</div>
+                                        Họ và tên: {user.name}</div>
+                                        <div>Tuổi:{user.age}</div>
+                                        <div>Địa chỉ: {user.address}</div>
                                         <hr />
                                     </div>
                                 }
