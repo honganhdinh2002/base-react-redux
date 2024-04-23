@@ -1,27 +1,31 @@
 import React from "react";
-import UserInfo from "./UserInfo";
+import AddUserInfo from "./AddUserInfo";
 import DisplayInfo from "./DisplayInfo";
 
 class MyComponent extends React.Component {
   state = {
-    listUsers: [
-      {id: 1, name: "Howl", age: 21},
-      {id: 2, name: "Anh", age: 16},
-      {id: 3, name: "Popp", age: 23},
-
-    ]
+    listUsers: []
   }
-    render() {
-        return (
-          <div>
 
-            <UserInfo />
-            <br/>
-            <DisplayInfo listUsers = {this.state.listUsers} />
-            
-          </div>
-        )
-      }
+  handleAddUserInfo = (userObj) => {
+    console.log("Added successfully" ,userObj);
+    this.setState({
+      listUsers: [userObj, ...this.state.listUsers]
+    })
+    alert("Added successfully!");
+  }
+
+  render() {
+    return (
+      <div>
+
+        <AddUserInfo handleAddUserInfo={this.handleAddUserInfo} />
+        <br/>
+        <DisplayInfo listUsers = {this.state.listUsers}/>
+        
+      </div>
+    )
+  }
 }
 export default MyComponent;
 

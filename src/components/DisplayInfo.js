@@ -17,7 +17,7 @@ class DisplayInfo extends React.Component {
         console.table(listUsers);
 
         return (
-            <div>
+            <div className="display-info-conatainer">
                 <div>
                     <span onClick={() => { this.handleShowHide() }}>
                     {this.state.isShowListUser === true ? "Hide list user": "Show list user"}
@@ -29,8 +29,10 @@ class DisplayInfo extends React.Component {
                             <div key={user.id} >
                                 {this.state.isShowListUser &&
                                     <div key={user.id} className={+user.age > 18 ? "green" : "red"}>
-                                        <div>My name's {user.name}</div>
-                                        <div>My age's {user.age}</div>
+                                        <div>
+                                        <b>Họ và tên: </b>{user.name}</div>
+                                        <div><b>Tuổi: </b> {user.age}</div>
+                                        <div><b>Địa chỉ: </b> {user.address}</div>
                                         <hr />
                                     </div>
                                 }
