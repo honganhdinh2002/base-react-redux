@@ -4,7 +4,20 @@ import DisplayInfo from "./DisplayInfo";
 
 class MyComponent extends React.Component {
   state = {
-    listUsers: []
+    listUsers: [
+      {
+        id: "1",
+        name: "Howl",
+        age: 21,
+        address: "Ha Noi"
+      },
+      {
+        id: "2",
+        name: "Hank",
+        age: 14,
+        address: "Hai Duong"
+      },
+    ]
   }
 
   handleAddUserInfo = (userObj) => {
@@ -15,13 +28,21 @@ class MyComponent extends React.Component {
     alert("Added successfully!");
   }
 
+  handleDeleteUser = (userID) => {
+    let listUserClone = this.state.listUsers;
+    listUserClone = listUserClone.filter(item => item.id !== userID);
+    this.setState({
+      listUsers: listUserClone
+    })
+  }
+
   render() {
     return (
       <div>
 
         <AddUserInfo handleAddUserInfo={this.handleAddUserInfo} />
         <br/>
-        <DisplayInfo listUsers = {this.state.listUsers}/>
+        <DisplayInfo listUsers = {this.state.listUsers} handleDeleteUser = {this.handleDeleteUser} />
         
       </div>
     )
