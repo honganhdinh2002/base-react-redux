@@ -1,52 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import AddUserInfo from "./AddUserInfo";
 import DisplayInfo from "./DisplayInfo";
 
-class MyComponent extends React.Component {
-  state = {
-    listUsers: [
-      {
-        id: "1",
-        name: "Howl",
-        age: 21,
-        address: "Ha Noi"
-      },
-      {
-        id: "2",
-        name: "Hank",
-        age: 14,
-        address: "Hai Duong"
-      },
+const MyComponent = (props) => {
+  const [listUsers, setListUsers] = useState(
+    [
+      { id: "1", name: "Dinh Hong Anh", age: 21, address: "26 Nam Dan, 11, District Hai Ba Trung, Ha Noi Capital" },
+      { id: "2", name: "Dinh Hoang Anh", age: 18, address: "288 Nam Ki Khoi Nghia, Vo Thi Sau, Dicstrict 3, Ho Chi Minh City" },
+      { id: "3", name: "Pham Hai Nam", age: 18, address: "227 Thanh Xuan, Hang Xom, District Nam Tu Niem, Ha Noi Capital" }
     ]
-  }
-
-  handleAddUserInfo = (userObj) => {
-    console.log("Added successfully" ,userObj);
-    this.setState({
-      listUsers: [userObj, ...this.state.listUsers]
-    })
+  );
+  const handleAddUserInfo = (userObj) => {
+    setListUsers([userObj, ...listUsers])
     alert("Added successfully!");
   }
-
-  handleDeleteUser = (userID) => {
-    let listUserClone = this.state.listUsers;
+  const handleDeleteUser = (userID) => {
+    let listUserClone = listUsers;
     listUserClone = listUserClone.filter(item => item.id !== userID);
-    this.setState({
-      listUsers: listUserClone
-    })
+    setListUsers(listUserClone);
   }
 
-  render() {
-    return (
-      <div>
-
-        <AddUserInfo handleAddUserInfo={this.handleAddUserInfo} />
-        <br/>
-        <DisplayInfo listUsers = {this.state.listUsers} handleDeleteUser = {this.handleDeleteUser} />
-        
-      </div>
-    )
-  }
+  return (
+    <div>
+      <AddUserInfo handleAddUserInfo={handleAddUserInfo} />
+      <br />
+      <DisplayInfo listUsers={listUsers} handleDeleteUser={handleDeleteUser} />
+    </div>
+  )
 }
 export default MyComponent;
 

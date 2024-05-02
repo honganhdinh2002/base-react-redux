@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './DisplayInfo.scss';
 
 
@@ -11,11 +11,19 @@ const DisplayInfo = (props) => {
         setActive(!isActive);
     }
 
+    useEffect(() => {
+        console.log("useEffect")
+            if(listUsers.length === 0) {
+                    alert('You deleted all user!')
+            }
+        }, [listUsers]
+    );
+    console.log('Render')
     return (
         <div className="display-info-conatainer">
             <div>
                 <span onClick={() => handleActive()}>
-                    {isActive === true ? "Hide" : "Show"}
+                    {isActive === true ? "Ẩn thông tin" : "Hiển thị thông tin"}
                 </span>
             </div>
 
