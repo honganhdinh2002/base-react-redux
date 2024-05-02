@@ -7,13 +7,19 @@ body {
 .app-container {
     .header-container {
         .navbar-nav { 
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0) !important;
             .nav-link {
                 &.active {
-                    color: pink;
+                    color: #0EACF9;
                 }
             }
 
         } 
             
     }
+}
+video {
+    position: fixed;
+    bottom: 0;
 }
